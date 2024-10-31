@@ -1,0 +1,110 @@
+:root {
+  --primary-purple: #8b7db5;
+  --light-purple: #e6e3ee;
+  --grid-purple: #f4f2f7;
+  --text-primary: #444444;
+  --text-secondary: #666666;
+  --red-color: #e54d4d;
+  --blue-color: #4d6be5;
+}
+
+.calendar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.month-container {
+  background: white;
+  border: 1px solid #e6e3ee;
+  margin-bottom: 2rem;
+}
+
+.month-header {
+  background: var(--primary-purple);
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.month-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-collapse: collapse;
+}
+
+.weekday-header {
+  background: var(--light-purple);
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #e6e3ee;
+  color: var(--primary-purple);
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid #e6e3ee;
+  position: relative;
+}
+
+.date-number {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.date-number.sunday,
+.text-red-600 {
+  color: var(--red-color);
+}
+
+.date-number.saturday {
+  color: var(--blue-color);
+}
+
+.schedule-list {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.schedule-item {
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.schedule-text {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.schedule-department {
+  color: #888;
+  font-size: 0.65rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.holiday-name {
+  color: var(--red-color);
+  font-size: 0.7rem;
+}
+
+.prev-month-day,
+.next-month-day {
+  color: #cccccc;
+  background: var(--grid-purple);
+}

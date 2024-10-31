@@ -1,0 +1,572 @@
+/* 기본 설정 */
+:root {
+  --primary-purple: #5b3e9f; /* 더 진한 보라색 */
+  --light-purple: #e2dcf0; /* 약간 더 진한 연한 보라 */
+  --grid-purple: #f0edf5; /* 약간 더 진한 그리드 보라 */
+  --text-primary: #444444;
+  --text-secondary: #666666;
+  --red-color: #e62b2b;
+  --blue-color: #3554d3;
+  --border-radius: 4px;
+  --transition-speed: 0.2s;
+
+  /* 브레이크포인트 */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+/* 리셋 및 기본 스타일 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 접근성을 위한 숨김 처리 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+/* 캘린더 컨테이너 */
+.calendar-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+/* 헤더 영역 */
+.calendar-header {
+  display: grid;
+  grid-template-columns: 250px 1fr 350px;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid var(--light-purple);
+  margin-bottom: 1rem;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+/* 년월 섹션 */
+.header-section.year-month {
+  text-align: center;
+  padding: 1rem;
+}
+
+.year-display {
+  background: var(--primary-purple);
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.25rem 1.5rem;
+  border-radius: var(--border-radius);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.month-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.month-navigation h2 {
+  font-size: 4.5rem;
+  color: var(--primary-purple);
+  font-weight: 800;
+  margin: 0;
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  color: var(--primary-purple);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--transition-speed);
+}
+
+.nav-button:hover {
+  color: var(--text-primary);
+}
+
+.nav-button:focus {
+  outline: 2px solid var(--primary-purple);
+  border-radius: var(--border-radius);
+}
+
+/* Todo 섹션 */
+.header-section.todo-section {
+  border-left: 1px solid var(--light-purple);
+  border-right: 1px solid var(--light-purple);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.todo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.todo-container h2 {
+  color: var(--primary-purple);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.todo-input-container {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.todo-input {
+  flex: 1;
+  height: 32px;
+  padding: 0 0.5rem;
+  border: 1px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+}
+
+.todo-add-button {
+  height: 32px;
+  padding: 0 1rem;
+  background: var(--primary-purple);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: opacity var(--transition-speed);
+}
+
+.todo-list {
+  flex: 1;
+  position: relative;
+  background: white;
+  border: 1px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  min-height: 80px;
+  height: calc(100% - 50px);
+}
+
+.todo-items {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.todo-item {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--light-purple);
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 메인 캘린더 */
+.calendar-body {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.month-container {
+  background: white;
+  border: 1px solid var(--light-purple);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--light-purple);
+  width: 100%;
+}
+
+.weekday-header {
+  background: var(--primary-purple);
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day {
+  background: white;
+  min-height: 120px;
+  height: auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  transition: background-color var(--transition-speed);
+}
+
+.calendar-day.today {
+  background: var(--grid-purple);
+}
+
+.calendar-day:hover {
+  background: var(--grid-purple);
+}
+
+.date-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.holiday-name {
+  color: var(--red-color);
+}
+
+.schedule-list {
+  max-height: 100px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.schedule-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.schedule-list::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 2px;
+}
+
+/* 일정 아이템 스타일 */
+.schedule-item {
+  position: relative;
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 0.25rem;
+  background: var(--grid-purple);
+  border-radius: var(--border-radius);
+  line-height: 1.4;
+  cursor: pointer;
+  z-index: 2;
+  transition: all var(--transition-speed);
+}
+
+.schedule-item:hover {
+  z-index: 999;
+  background: var(--light-purple);
+}
+
+.schedule-text-wrapper {
+  line-height: 1.2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
+  white-space: normal;
+  margin-bottom: 2px;
+}
+.schedule-text {
+  color: var(--primary-purple);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.schedule-department-wrapper {
+  color: #666;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.schedule-department {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 툴팁 스타일 */
+.schedule-tooltip {
+  position: absolute;
+  visibility: visible;
+  left: 100%;
+  top: 0;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 99999;
+  min-width: 200px;
+  max-width: 300px;
+  white-space: normal;
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 5px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+.calendar-day:nth-child(7n) .schedule-tooltip,
+.calendar-day:nth-child(7n-1) .schedule-tooltip {
+  left: auto;
+  right: calc(100% + 5px);
+}
+
+.schedule-item {
+  margin: 2px 0;
+  padding: 4px;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  height: 42px;
+  overflow: hidden;
+}
+
+.schedule-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.tooltip-text {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.tooltip-department {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* 미니 캘린더 */
+.header-section.mini-calendars {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.mini-calendar-wrapper {
+  width: 160px;
+  background: white;
+  border: 1px solid var(--light-purple);
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+}
+
+.mini-calendar-title {
+  font-size: 0.8rem;
+  color: var(--primary-purple);
+  font-weight: bold;
+  text-align: center;
+  padding: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.mini-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--light-purple);
+  padding: 1px;
+}
+
+.mini-cal-header,
+.mini-cal-day {
+  background: white;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 0.15rem;
+}
+
+.mini-cal-header.sunday,
+.mini-cal-day.sunday {
+  color: var(--red-color);
+}
+
+.mini-cal-header.saturday,
+.mini-cal-day.saturday {
+  color: var(--blue-color);
+}
+
+.mini-cal-day.today {
+  background: var(--light-purple);
+  font-weight: bold;
+}
+
+/* 그리드 배경 */
+.grid-background {
+  background-image: linear-gradient(var(--light-purple) 1px, transparent 1px),
+    linear-gradient(90deg, var(--light-purple) 1px, transparent 1px);
+  background-size: 20px 20px;
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* 반응형 스타일 */
+@media (max-width: var(--breakpoint-lg)) {
+  .calendar-header {
+    grid-template-columns: 1fr;
+  }
+
+  .header-section.mini-calendars {
+    display: none;
+  }
+
+  .calendar-container {
+    padding: 0.5rem;
+  }
+
+  .calendar-header {
+    padding: 0.5rem;
+  }
+
+  .month-navigation h2 {
+    font-size: 3rem;
+  }
+
+  .todo-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .todo-input-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .weekday-header {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .calendar-day {
+    padding: 0.5rem;
+  }
+
+  .date-number {
+    font-size: 0.9rem;
+  }
+
+  .schedule-item {
+    padding: 0.25rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .calendar-container {
+    padding: 0.25rem;
+  }
+
+  .header-section.year-month {
+    padding: 0.5rem;
+  }
+
+  .month-navigation h2 {
+    font-size: 2rem;
+  }
+
+  .todo-section {
+    padding: 0.5rem;
+  }
+
+  .schedule-tooltip {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+  }
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--grid-purple);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--light-purple);
+  border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-purple);
+}
