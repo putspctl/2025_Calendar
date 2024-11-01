@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "src/index.jsx",
+  "main": "src/index.tsx",
   "dependencies": {
     "@fontsource/pretendard": "5.1.0",
     "@headlessui/react": "2.2.0",
